@@ -37,8 +37,7 @@ public class Movement : MonoBehaviour
             Vector2 direction = ctx.ReadValue<Vector2>();
             //print($"Set Direction: {direction}");
             SetDirection(direction);
-        }
-        
+        }   
         
     }
 }
