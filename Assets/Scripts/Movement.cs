@@ -35,7 +35,6 @@ public class Movement : MonoBehaviour
         if(ctx.phase == InputActionPhase.Performed || ctx.phase == InputActionPhase.Canceled)
         {
             Vector2 direction = ctx.ReadValue<Vector2>();
-            //print($"Set Direction: {direction}");
             SetDirection(direction);
         }   
         
