@@ -10,7 +10,6 @@ public class PlayerMovement : MonoBehaviour
     public float jumpForce;
 
     private Rigidbody2D rb;
-
     private SpriteRenderer spriteRenderer;
     Animator animator;
     void Start()
