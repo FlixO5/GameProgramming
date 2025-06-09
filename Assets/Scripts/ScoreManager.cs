@@ -12,20 +12,20 @@ public class ScoreManager : MonoBehaviour
     public void AddScore(int value)
     {
         score += value;
-        scoreDisplay.text = "Score: " + score.ToString("D6");
+        scoreDisplay.text = "Score: " + score;
     }
+
     void OnTriggerEnter2D(Collider2D other)
     {
         if (other.gameObject.CompareTag("Collectible"))
         {
             Destroy(other.gameObject);
-            score += 100;
+            AddScore(100);
         }
-        else if (other.gameObject.CompareTag("SpecialCollectible"))
+        else if (other.gameObject.CompareTag("Respawn"))
         {
-            Destroy(other.gameObject);
-            score += 1000;
+            AddScore(-50);
         }
-        scoreDisplay.text = "Score: " + score;
+        
     }
 }
