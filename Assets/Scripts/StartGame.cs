@@ -9,9 +9,4 @@ public class StartGame : MonoBehaviour
     {
         SceneManager.LoadScene("Level");
     }
-
-    public void End()
-    {
-        Application.Quit();
-    }
 }
