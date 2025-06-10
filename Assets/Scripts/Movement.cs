@@ -5,11 +5,12 @@ using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.SocialPlatforms.Impl;
 
-public class PlayerMovement : MonoBehaviour
+public class Movement : MonoBehaviour
 {
     public float speed;
     public float jumpForce;
     bool isGrounded = false;
+    public GameObject respawnPoint;
 
     private Rigidbody2D rb;
     private SpriteRenderer spriteRenderer;

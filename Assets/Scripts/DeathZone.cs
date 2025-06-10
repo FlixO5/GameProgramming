@@ -6,7 +6,7 @@ using UnityEngine.SceneManagement;
 public class DeathZone : MonoBehaviour
 {
     public GameObject Player;
-    public static GameObject respawnPoint;
+    public GameObject respawnPoint;
 
     // Start is called before the first frame update
     void Start()
@@ -23,7 +23,7 @@ public class DeathZone : MonoBehaviour
     {
         if (collision.gameObject.CompareTag("Player"))
         {
-            Player.transform.position = respawnPoint.transform.position;
+            Player.transform.position = Player.GetComponent<Movement>().respawnPoint.transform.position;
         }
     }
 }

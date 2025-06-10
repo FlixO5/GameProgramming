@@ -8,10 +8,8 @@ public class ScoreManager : MonoBehaviour
     public static ScoreManager instance;
     public TMP_Text scoreDisplay;
     int score;
-    void Awake()
-    {
-        
-    }
+    public AudioSource Coin;
+    public AudioSource Damage;
     public void AddScore(int value)
     {
         score += value;
@@ -22,11 +20,13 @@ public class ScoreManager : MonoBehaviour
     {
         if (other.gameObject.CompareTag("Collectible"))
         {
+            Coin.Play();
             Destroy(other.gameObject);
             AddScore(100);
         }
         else if (other.gameObject.CompareTag("Respawn"))
         {
+            Damage.Play();
             AddScore(-50);
         }
 

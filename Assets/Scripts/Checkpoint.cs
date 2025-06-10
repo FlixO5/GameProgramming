@@ -13,7 +13,7 @@ public class Checkpoint : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-
+        
     }
 
     // Update is called once per frame
@@ -25,7 +25,7 @@ public class Checkpoint : MonoBehaviour
     {
         if (other.gameObject.CompareTag("Player"))
         {
-            DeathZone.respawnPoint = this.gameObject;
+            other.gameObject.GetComponent<Movement>().respawnPoint = this.gameObject;
         }
     }
 }
