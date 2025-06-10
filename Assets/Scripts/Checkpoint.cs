@@ -25,7 +25,7 @@ public class Checkpoint : MonoBehaviour
     {
         if (other.gameObject.CompareTag("Player"))
         {
-            respawn.respawnPoint = this.gameObject;
+            DeathZone.respawnPoint = this.gameObject;
         }
     }
 }

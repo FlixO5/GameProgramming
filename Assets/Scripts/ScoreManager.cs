@@ -8,7 +8,10 @@ public class ScoreManager : MonoBehaviour
     public static ScoreManager instance;
     public TMP_Text scoreDisplay;
     int score;
-
+    void Awake()
+    {
+        
+    }
     public void AddScore(int value)
     {
         score += value;
@@ -26,6 +29,11 @@ public class ScoreManager : MonoBehaviour
         {
             AddScore(-50);
         }
-        
+
     }
+    public int GetScore()
+    {
+        return score;
+    }
+
 }

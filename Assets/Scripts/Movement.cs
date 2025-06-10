@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using Unity.VisualScripting;
@@ -8,6 +9,7 @@ public class PlayerMovement : MonoBehaviour
 {
     public float speed;
     public float jumpForce;
+    bool isGrounded = false;
 
     private Rigidbody2D rb;
     private SpriteRenderer spriteRenderer;
@@ -30,17 +32,29 @@ public class PlayerMovement : MonoBehaviour
             spriteRenderer.flipX = false;
         }
     }
+    void Update()
+    {
+        if (Input.GetKeyDown(KeyCode.Space) && isGrounded == true)
+        {
+            rb.AddForce(new Vector2(0f, jumpForce), ForceMode2D.Impulse);
+            isGrounded = false;
+            animator.SetBool("isJumping", !isGrounded);
+        }
+    }
     void FixedUpdate()
     {
         float horizontalInput = Input.GetAxis("Horizontal");
         transform.Translate(new Vector3(horizontalInput * speed * Time.deltaTime, 0f, 0f));
+        animator.SetFloat("xVelocity", Math.Abs(horizontalInput));
+        animator.SetFloat("yVelocity", rb.velocity.y);
         SpriteFlip(horizontalInput);
-
-        if (Input.GetKeyDown(KeyCode.Space) && Mathf.Abs(rb.velocity.y) < 0.001f)
+    }
+    private void OnTriggerEnter2D(Collider2D other)
+    {
+        if (other.gameObject.CompareTag("Ground"))
         {
-            rb.AddForce(new Vector2(0f, jumpForce), ForceMode2D.Impulse);
-            animator.SetBool("isJumping", true);
+            isGrounded = true;
+            animator.SetBool("isJumping", false);
         }
-        animator.SetBool("isJumping", false);
     }
 }
